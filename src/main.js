@@ -5,18 +5,23 @@ let data = {
     name: "",
     email: "",
     phone: "",
+    plan: "Arcade",
+    time: "Monthly",
 }
 
 const steps = document.getElementsByClassName("number");
 const nextStepButton = document.getElementById("nextStep");
 const backStepButton = document.getElementById("backStep");
+const time_button = document.getElementById("time_button");
+
+
 let actMoment = 1;
 function setRightPage(actMoment) {
 resetColor();
     switch (actMoment) {
         case 1: {
             setColor("info_step")
-            generatePanel(1,data);
+            //generatePanel(1,data);
             break;
         }
         case 2: {
@@ -74,9 +79,26 @@ function backStep(){
         backStepButton.style.display = "none";
     }
 }
+function SetTime(){
+    let property;
+    if(data.time == "Monthly"){
+        property = "57%"
+        data.time = "Yearly"
+    }else{
+        property = "10%"
+        data.time = "Monthly"
+    }
+    time_button.style.setProperty("--position",property);
+}
+
+
+
+
+
 
 
 
 document.addEventListener("DOMContentLoaded",setRightPage(actMoment));
 nextStepButton.addEventListener("click",nextPage);
 backStepButton.addEventListener("click",backStep);
+time_button.addEventListener("click",SetTime);

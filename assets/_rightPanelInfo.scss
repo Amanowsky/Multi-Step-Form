@@ -1,0 +1,50 @@
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-top: 5%;
+        font-size: 0.8em;
+        color: hsl(213, 96%, 18%);
+        position: relative;
+    }
+
+    .input_form {
+        margin-top: 1%;
+        padding: 2.5%;
+        border: 1px solid hsl(231, 11%, 63%);
+        border-radius: 5px;
+    }
+    .input_form_invalid{
+        margin-top: 1%;
+        padding: 2.5%;
+        border: 1px solid hsl(354, 84%, 57%);
+        border-radius: 5px;
+    }
+
+    .input_form:focus {
+        border: 1px solid hsl(213, 96%, 18%);
+    }
+
+    .invalid {
+        position: absolute;
+        color: hsl(354, 84%, 57%);
+        font-weight: 700;
+        left: 64%;
+    }
+
+    #invalid_name {
+        top: 20%;
+    }
+
+    #invalid_email {
+        top: 37%;
+    }
+
+    #invalid_phone {
+        top: 54%;
+    }
+
+    
+}
