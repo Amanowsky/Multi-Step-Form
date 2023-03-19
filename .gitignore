@@ -1,0 +1,7 @@
+.parcel-cache/*
+node_modules/*
+style-guide.md
+dist/*
+
+.DS_Store
+.prettierignore
