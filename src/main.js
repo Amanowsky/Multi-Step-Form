@@ -1,19 +1,19 @@
 import checkForm from "./checkForm.js"
 import generatePanel from "./generatePanel.js";
+import {setTime, choosePlan } from "./setTime";
 
 let data = {
     name: "",
     email: "",
     phone: "",
-    plan: "Arcade",
+    plan: "arcade",
     time: "Monthly",
 }
 
 const steps = document.getElementsByClassName("number");
 const nextStepButton = document.getElementById("nextStep");
 const backStepButton = document.getElementById("backStep");
-const time_button = document.getElementById("time_button");
-const plan_button = document.getElementsByClassName("plan");
+
 
 
 let actMoment = 1;
@@ -22,12 +22,13 @@ resetColor();
     switch (actMoment) {
         case 1: {
             setColor("info_step")
-            //generatePanel(1,data);
+            generatePanel(1,data);
             break;
         }
         case 2: {
             setColor("plan_step")
-            generatePanel(2);
+            generatePanel(2,data);
+            setEvents();
             break;
         }
         case 3: {
@@ -51,7 +52,18 @@ function resetColor(){
         el.style.color = "white";
     }
 }
-
+function setEvents(){
+    const time_button = document.getElementById("time_button");
+    const plan_button = document.getElementsByClassName("plan");
+    time_button.addEventListener("click",function(){
+        setTime(data)
+    });
+    for(let i=0;i<3;i++){
+        plan_button[i].addEventListener("click",function(){
+            choosePlan(event,data)
+        });
+    }
+}
 
 function nextPage(){
     if(actMoment == 1){
@@ -80,57 +92,9 @@ function backStep(){
         backStepButton.style.display = "none";
     }
 }
-function SetTime(){
-    const panelId = ["arcade","advanced","pro"]
-    const price = ["$9/mo","$13/mo","$15/mo","$90/yr","$120/yr","$150/yr"]
-    let property;
-    if(data.time == "Monthly"){
-        for(let i=0;i<3;i++){
-            document.getElementById(panelId[i]).children[2].textContent = price[i+3];
-            document.getElementById(panelId[i]).children[3].style.display = "block";
-        }
-        document.getElementById("Monthly").style.color = "hsl(231, 11%, 63%)";
-        document.getElementById("Yearly").style.color = "hsl(213, 96%, 18%)";
-        property = "57%"
-        data.time = "Yearly"
-
-    }else{
-        for(let i=0;i<3;i++){
-            document.getElementById(panelId[i]).children[2].textContent = price[i];
-            document.getElementById(panelId[i]).children[3].style.display = "none";
-        }
-        document.getElementById("Monthly").style.color = "hsl(213, 96%, 18%)";
-        document.getElementById("Yearly").style.color = "hsl(231, 11%, 63%)";
-        property = "10%"
-        data.time = "Monthly"
-    }
-    time_button.style.setProperty("--position",property);
-}
-function choosePlan(event){
-    const panelId = ["arcade","advanced","pro"]
-    for(let i=0;i<3;i++){
-        document.getElementById(panelId[i]).style.background = "";
-        document.getElementById(panelId[i]).style.border = "1px solid hsl(231, 11%, 63%)";
-    }
-    const id = event.currentTarget.id;
-    document.getElementById(id).style.background = "hsl(231, 100%, 99%)";
-    document.getElementById(id).style.border = "1px solid hsl(213, 96%, 18%)";
-    
-}
-
-
-
-
-
-
-
 
 
 
 document.addEventListener("DOMContentLoaded",setRightPage(actMoment));
 nextStepButton.addEventListener("click",nextPage);
 backStepButton.addEventListener("click",backStep);
-time_button.addEventListener("click",SetTime);
-for(let i=0;i<3;i++){
-    plan_button[i].addEventListener("click",choosePlan);
-}
