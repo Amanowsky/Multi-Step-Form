@@ -2,7 +2,7 @@
 @use "rightpanel";
 @use "rightpanelInfo";
 @use "rigthpanelPlans";
-
+@use "rightpaneladdons";
 
 
 html {
@@ -34,11 +34,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    user-select: none;
 }
 
-input {
-    all: unset;
-}
+
 
 button {
     all: unset;

@@ -22,13 +22,13 @@ resetColor();
     switch (actMoment) {
         case 1: {
             setColor("info_step")
-            generatePanel(1,data);
+            //generatePanel(1,data);
             break;
         }
         case 2: {
             setColor("plan_step")
-            generatePanel(2,data);
-            setEvents();
+           // generatePanel(2,data);
+            //setEvents();
             break;
         }
         case 3: {

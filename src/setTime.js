@@ -35,7 +35,7 @@ export function choosePlan(event,data){
     const id = event.currentTarget.id;
     data.plan = id;
     document.getElementById(id).style.background = "hsl(231, 100%, 99%)";
-    document.getElementById(id).style.border = "1px solid hsl(213, 96%, 18%)";
+    document.getElementById(id).style.border = "1px solid hsl(243, 100%, 62%)";
     
 }
 

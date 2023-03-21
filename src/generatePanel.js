@@ -60,7 +60,7 @@ function panel2(data,primaryData){
         div.className = "plan";
         if(primaryData.plan == data.id[i]) {
             div.style.background = "hsl(231, 100%, 99%)"
-            div.style.border = "1px solid hsl(213, 96%, 18%)"
+            div.style.border = "1px solid hsl(243, 100%, 62%)"
         }
         img.src = data.imgsrc[i];
         h3.textContent = data.h3[i];
