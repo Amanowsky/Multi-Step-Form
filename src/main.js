@@ -8,12 +8,30 @@ let data = {
     phone: "",
     plan: "arcade",
     time: "Monthly",
+    addons: [],
 }
 
 const steps = document.getElementsByClassName("number");
 const nextStepButton = document.getElementById("nextStep");
 const backStepButton = document.getElementById("backStep");
 
+
+const addons = document.getElementsByClassName("addon");
+console.log(addons)
+
+function setAddons(event){
+    data.addons.push(event.currentTarget.id)
+    switch(event.currentTarget.id){
+        case "service":
+            document.getElementById("service_checkbox").checked = !document.getElementById("service_checkbox").checked
+    }
+}
+
+for(let i=0;i<addons.length;i++){
+    addons[i].addEventListener("click",function(){
+        setAddons(event)
+    });
+}
 
 
 let actMoment = 1;
